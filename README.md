@@ -10,6 +10,8 @@ Add status window
 
 Remove error alert and auto reconnect
 
+Working in proxy mode by default
+
 #Bug fix:
 
 Fix crash when enum all process
