@@ -1,17 +1,17 @@
 # Pretty iSSH
 
-fork project from http://macserve.org.uk/projects/issh/
+Fork project from http://macserve.org.uk/projects/issh/
 
 #Update feature:
 
-auto load settings
+Auto load settings
 
-add status window
+Add status window
 
-remove error alert and auto reconnect
+Remove error alert and auto reconnect
 
 #Bug fix:
 
-fix crash when enum all process
+Fix crash when enum all process
 
-fix a lot of memory use by taskgated when running for a long time
+Fix a lot of memory use by taskgated when running for a long time
