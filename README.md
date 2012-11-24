@@ -1,4 +1,5 @@
 # Pretty iSSH
+# A Pretty Version Of iSSH, Fix bugs, Make it easy to use
 
 Fork project from http://macserve.org.uk/projects/issh/
 
