@@ -16,4 +16,4 @@ Working in proxy mode by default
 
 Fix crash when enum all process
 
-Fix a lot of memory use by taskgated when running for a long time
+Fix long-running lead taskgaged using too much memory
