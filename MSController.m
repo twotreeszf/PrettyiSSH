@@ -76,13 +76,14 @@ NSString * const processName = @"ssh";
 - (IBAction)loadSettings:(id)sender {
     
 	defaults = [ NSUserDefaults standardUserDefaults ];
-	[ remoteAddress setStringValue: [ defaults objectForKey: @"remoteAddress" ]];
-	[ userName setStringValue: [ defaults objectForKey: @"userName" ]];
-	[ portNumber setStringValue: [ defaults objectForKey: @"portNumber" ]];
-	[ localPort setStringValue: [ defaults objectForKey: @"localPort" ]];
-	[ remotePort setStringValue: [ defaults objectForKey: @"remotePort" ]];
-	[ socksPort setStringValue: [ defaults objectForKey: @"socksPort" ]];
-	
+	NSString* str = nil;
+	[ remoteAddress setStringValue: (str = [ defaults objectForKey: @"remoteAddress" ]) ? str :  @""];
+	[ userName setStringValue: (str = [ defaults objectForKey: @"userName" ]) ? str :  @""];
+	[ portNumber setStringValue: (str = [ defaults objectForKey: @"portNumber" ]) ? str :  @""];
+	[ localPort setStringValue: (str = [ defaults objectForKey: @"localPort" ]) ? str :  @""];
+	[ remotePort setStringValue: (str = [ defaults objectForKey: @"remotePort" ]) ? str :  @""];
+	[ socksPort setStringValue: (str = [ defaults objectForKey: @"socksPort" ]) ? str :  @""];
+
 	if([[ EMKeychainProxy sharedProxy ] genericKeychainItemForService: @"iSSH" withUsername: @"MacServe" ] != nil) {
 	[ passWord setStringValue: [[[ EMKeychainProxy sharedProxy ] genericKeychainItemForService: @"iSSH" withUsername: @"MacServe" ] password ]];
 	}
@@ -209,6 +210,8 @@ NSString * const processName = @"ssh";
 
 - (void)terminate {
 
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	if([ self checkStatus ] == 0) {
 		
 		[ _process terminate ];

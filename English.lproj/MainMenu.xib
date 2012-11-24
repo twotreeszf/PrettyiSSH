@@ -425,7 +425,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{659, 322}, {368, 524}}</string>
 				<int key="NSWTFlags">1946157056</int>
-				<string key="NSWindowTitle">iSSH</string>
+				<string key="NSWindowTitle">PrettyiSSH mod by twotrees.zf@gmail.com</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
@@ -467,6 +467,7 @@
 							<string key="NSFrame">{{216, 41}, {132, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="198430826">
 								<int key="NSCellFlags">-2080374784</int>
