@@ -601,7 +601,7 @@ AGGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 			for (i = [args count] - 1; i >= (argumentCount - 1) && i >= 0; i--) {
 				NSString *string = [args objectAtIndex:i];
 				int index = [string rangeOfString:@"="].location;
-				if (index != NSNotFound)
+				if (index != NSNotFound && index != -1)
 					[env setObject:[string substringFromIndex:index + 1] forKey:[string substringToIndex:index]];
 			}
 			args = [args subarrayWithRange:NSMakeRange(0, i + 1)];
