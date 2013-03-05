@@ -49,6 +49,7 @@
     IBOutlet NSButton *stopButton;
     IBOutlet NSButton *stopQuitButton;
     IBOutlet NSTextField *userName;
+	IBOutlet NSTextField *obfuscatedKey;
 	IBOutlet NSTextField *output;
 	NSTask *_task;
 	NSPipe *_pipe;

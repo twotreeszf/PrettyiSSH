@@ -83,6 +83,7 @@ NSString * const processName = @"ssh";
 	[ localPort setStringValue: (str = [ defaults objectForKey: @"localPort" ]) ? str :  @""];
 	[ remotePort setStringValue: (str = [ defaults objectForKey: @"remotePort" ]) ? str :  @""];
 	[ socksPort setStringValue: (str = [ defaults objectForKey: @"socksPort" ]) ? str :  @""];
+	[ obfuscatedKey setStringValue: (str = [ defaults objectForKey: @"obfuscatedKey" ]) ? str :  @""];
 
 	if([[ EMKeychainProxy sharedProxy ] genericKeychainItemForService: @"iSSH" withUsername: @"MacServe" ] != nil) {
 	[ passWord setStringValue: [[[ EMKeychainProxy sharedProxy ] genericKeychainItemForService: @"iSSH" withUsername: @"MacServe" ] password ]];
@@ -103,6 +104,7 @@ NSString * const processName = @"ssh";
 	[ defaults setObject:[ localPort stringValue ] forKey: @"localPort" ];
 	[ defaults setObject:[ remotePort stringValue ] forKey: @"remotePort" ];
 	[ defaults setObject:[ socksPort stringValue ] forKey: @"socksPort" ];
+	[ defaults setObject:[ obfuscatedKey stringValue ] forKey: @"obfuscatedKey" ];
 	
 	if([[ EMKeychainProxy sharedProxy ] genericKeychainItemForService: @"iSSH" withUsername: @"MacServe" ] == nil) {
 		[[ EMKeychainProxy sharedProxy ] addGenericKeychainItemForService: @"iSSH" withUsername: @"MacServe" password: [ passWord stringValue ]];		
@@ -150,7 +152,7 @@ NSString * const processName = @"ssh";
 	
 	_task = [[NSTask alloc] init];
 	NSMutableDictionary *environment = [ NSMutableDictionary dictionaryWithDictionary: [[ NSProcessInfo processInfo ] environment ]];
-    [ _task setLaunchPath: @"/usr/bin/ssh"];
+    [ _task setLaunchPath: @"/usr/local/bin/ssh"];
 	
 	[ environment removeObjectForKey:@"SSH_AGENT_PID" ];
 	[ environment removeObjectForKey:@"SSH_AUTH_SOCK" ];
@@ -184,6 +186,12 @@ NSString * const processName = @"ssh";
 		
 	[ arguments addObject: [ portNumber stringValue ] ];
 	NSLog(@"Connecting on port %@", [ portNumber stringValue]);
+	}
+	
+	if ([[obfuscatedKey stringValue] length])
+	{
+		[arguments addObject:@"-zZ"];
+		[arguments addObject:[obfuscatedKey stringValue]];
 	}
 	
 	[ arguments addObject: @"-F" ];

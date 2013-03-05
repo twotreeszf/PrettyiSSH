@@ -1,0 +1,7 @@
+export LIBS='-lm -ltermcap -lresolv' 
+
+./configure
+
+make
+
+sudo make install
